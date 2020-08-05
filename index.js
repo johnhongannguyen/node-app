@@ -21,10 +21,14 @@ app.use(express.json());
 
 const authRoute = require('./routes/auth');
 
-// Route Middlewares
+// Route Middleware
 app.use('/api/user', authRoute);
 app.use('/api/posts', postRoute);
+app.get('/api/test',(req,res)=>{
+    res.status(400).json({
+        "message":"Welcome to my app"
+    })
+})
 
-
-
-app.listen(3000, () => console.log(`Server is listening`))
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server is listening on ${PORT}`))
